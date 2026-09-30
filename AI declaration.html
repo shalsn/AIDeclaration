@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University of Hertfordshire Business School – AI Declaration Form</title>
+  <style>
+    :root {
+      --uh-purple: #5A1A60; /* UH Brand Deep Purple */
+      --uh-purple-hover: #431248;
+      --secondary-color: #f4f6f9;
+      --border-color: #ccc;
+      --text-color: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      color: var(--text-color);
+      background-color: #e9ecef;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* UH Branded Header */
+    .uh-header {
+      background-color: var(--uh-purple);
+      color: #ffffff;
+      padding: 25px 30px;
+      text-align: center;
+    }
+
+    .uh-header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .uh-header h2 {
+      margin: 8px 0 0 0;
+      font-size: 26px;
+      font-weight: 700;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 10px;
+    }
+
+    .form-content {
+      padding: 30px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[readonly] {
+      background-color: #e9ecef;
+    }
+
+    .section-title {
+      background-color: var(--uh-purple);
+      color: white;
+      padding: 8px 12px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .radio-option {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      border-radius: 6px;
+      background-color: #fafafa;
+      cursor: pointer;
+    }
+
+    .radio-option:hover {
+      background-color: #f0f4f8;
+    }
+
+    .radio-option input {
+      margin-right: 10px;
+    }
+
+    .guidance-link-text {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .guidance-link-text a {
+      color: var(--uh-purple);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .info-box {
+      padding: 12px 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .info-yellow {
+      background-color: #fff9db;
+      border: 1px solid #fcc419;
+      color: #856404;
+    }
+
+    .info-red {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+
+    .info-warning {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+    }
+
+    .proofreading-guidelines {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .guideline-box {
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .guideline-may {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+
+    .guideline-mustnot {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+
+    .guideline-box ul {
+      margin: 5px 0 0 20px;
+      padding: 0;
+    }
+
+    .declaration-box {
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      border-radius: 6px;
+      background-color: #fdfdfd;
+      margin-top: 20px;
+    }
+
+    .declaration-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .declaration-checkbox input {
+      margin-top: 4px;
+    }
+
+    .actions {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .btn {
+      background-color: var(--uh-purple);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: var(--uh-purple-hover);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Print styling to generate clean PDF with intact header colors */
+    @media print {
+      body {
+        background-color: #fff;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      .actions {
+        display: none;
+      }
+      .uh-header {
+        background-color: var(--uh-purple) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title {
+        background-color: var(--uh-purple) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      input, select, textarea {
+        border: none !important;
+        border-bottom: 1px solid #000 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 2px 0 !important;
+      }
+      .radio-option {
+        border: none;
+        padding: 2px 0;
+      }
+      .radio-option input[type="radio"]:not(:checked) {
+        display: none;
+      }
+      .radio-option input[type="radio"]:not(:checked) + span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="assessmentForm">
+  <!-- UH Business School Branded Header -->
+  <div class="uh-header">
+    <h1>University of Hertfordshire Business School</h1>
+    <h2>AI Declaration Form</h2>
+  </div>
+
+  <div class="form-content">
+    <!-- Student & Module Details -->
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="studentId">Student ID Number *</label>
+        <input type="text" id="studentId" required placeholder="e.g. 12345678">
+      </div>
+      <div class="form-group">
+        <label for="studentName">Student Name *</label>
+        <input type="text" id="studentName" required placeholder="Full Name">
+      </div>
+      <div class="form-group">
+        <label for="moduleCode">Module Code *</label>
+        <input type="text" id="moduleCode" placeholder="e.g. 7BUSxxxx" required>
+      </div>
+      <div class="form-group">
+        <label for="moduleTitle">Module Title *</label>
+        <input type="text" id="moduleTitle" placeholder="e.g. Management .." required>
+      </div>
+      <div class="form-group full-width">
+        <label for="assessmentTitle">Assessment Title *</label>
+        <input type="text" id="assessmentTitle" required placeholder="Assignment Title">
+      </div>
+      <div class="form-group full-width">
+        <label for="submissionDate">Submission Date</label>
+        <input type="date" id="submissionDate" readonly>
+      </div>
+    </div>
+
+    <!-- Category Selection -->
+    <div class="section-title">Use of Generative AI – Declaration</div>
+    <p style="font-size: 14px;">Please refer to the assignment brief to identify the permitted use of AI for this assessment. Select ONE category that applies:</p>
+
+    <div class="radio-group">
+      <label class="radio-option">
+        <input type="radio" name="aiCategory" value="cat1" onclick="handleCategoryChange()">
+        <span><strong>Category 1 – Authorised use of AI:</strong> You are permitted to use generative AI tools for content creation and proofreading.</span>
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="aiCategory" value="cat2" onclick="handleCategoryChange()">
+        <span><strong>Category 2 – AI not permitted for content creation, permitted for proofreading:</strong> You are permitted to use generative AI tools or proofreading services for language refinement only.</span>
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="aiCategory" value="cat3" onclick="handleCategoryChange()">
+        <span><strong>Category 3 – AI not permitted:</strong> You are not permitted to use generative AI tools or proofreading services for this assessment.</span>
+      </label>
+    </div>
+
+    <!-- Guidance Link -->
+    <p class="guidance-link-text">
+      For further guidance, visit: <a href="https://ask.herts.ac.uk/ai-tools" target="_blank" rel="noopener noreferrer">https://ask.herts.ac.uk/ai-tools</a>
+    </p>
+
+    <!-- Light Red Viva Examination Warning Box (Always visible) -->
+    <div class="info-box info-red">
+      If there is any doubt regarding the file authorship or generative content, the marker/module leader reserves the right to conduct a viva (oral examination). The student will be notified at least 1 working day in advance.
+    </div>
+
+    <!-- Dynamic Warning for Category 1 -->
+    <div id="cat1Warning" class="info-box info-warning hidden">
+      ⚠️️ <strong>Notice:</strong> It is your responsibility to check the assignment brief and follow the instructions on which sections AI is authorised.
+    </div>
+
+    <!-- Light Yellow Summary Text Box (Only visible for Cat 1 and Cat 2) -->
+    <div id="summaryYellowBox" class="info-box info-yellow hidden">
+      <strong>In summary:</strong> The tool/proofreader should not make direct changes to the text file. They must only identify, highlight, or draw attention to potential improvements, leaving all cognitive edits and decisions completely to the student.
+    </div>
+
+    <!-- Dynamic Proofreading Rules Box (Shown for Cat 1 and Cat 2) -->
+    <div id="proofreadingGuidelines" class="proofreading-guidelines hidden">
+      <div class="guideline-box guideline-may">
+        <strong>✅ Proofreading MAY:</strong>
+        <ul>
+          <li>Identify spelling and grammar errors</li>
+          <li>Flag unclear sentences</li>
+          <li>Suggest tone or flow improvements</li>
+          <li>Highlight punctuation issues</li>
+        </ul>
+      </div>
+      <div class="guideline-box guideline-mustnot">
+        <strong>❌ Proofreading MUST NOT:</strong>
+        <ul>
+          <li>Rewrite passages or directly modify work</li>
+          <li>Change content beyond spelling/grammar mechanics</li>
+          <li>Re-arrange structural layout or arguments</li>
+          <li>Add entirely new material or references</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Dynamic Details Section (Categories 1 & 2) -->
+    <div id="detailsSection" class="hidden">
+      <div class="section-title">AI / Proofreading Tool Details</div>
+
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label for="serviceType">Type of Service Used *</label>
+          <select id="serviceType">
+            <option value="">-- Select Type --</option>
+            <option value="GenAI">GenAI (ChatGPT, CoPilot, Claude etc.)</option>
+            <option value="Human Proofreader">Human Proofreader</option>
+            <option value="Other Proofreading Software">Other proofreading software (Grammarly/Word)</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="toolName">Name of Tool or Service Used *</label>
+          <input type="text" id="toolName" placeholder="e.g. ChatGPT-4o, Grammarly Premium">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="sectionsUsed">Section / Pages Where Used *</label>
+          <input type="text" id="sectionsUsed" placeholder="e.g. Introduction, Section 2.1, Pages 3-5">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="promptsGiven">Prompt / Instructions Given *</label>
+          <textarea id="promptsGiven" rows="3" placeholder="Enter exact prompts or instructions provided to the tool/service"></textarea>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="suggestionsGiven">Suggestions Given by Service *</label>
+          <textarea id="suggestionsGiven" rows="3" placeholder="Summarize the feedback or output received"></textarea>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="actualChanges">Actual Changes Done *</label>
+          <textarea id="actualChanges" rows="3" placeholder="Describe how you incorporated the suggestions into your final submission"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Declaration -->
+    <div class="section-title">Student Declaration</div>
+    <div class="declaration-box">
+      <div class="declaration-checkbox">
+        <input type="checkbox" id="declarationCheck" required>
+        <label for="declarationCheck">
+          I confirm that I have followed the guidance provided in the assignment brief regarding the permitted use of AI. I understand that undeclared or unauthorised use of AI tools may be considered academic misconduct.
+        </label>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="declarationName">Signature (Type Full Name) *</label>
+          <input type="text" id="declarationName" required placeholder="Type name as signature">
+        </div>
+        <div class="form-group">
+          <label for="declarationDate">Declaration Date</label>
+          <input type="date" id="declarationDate" readonly>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <div class="actions">
+      <button type="button" class="btn" onclick="generatePDF()">Generate Cover Page PDF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Set system date on page load
+  document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('submissionDate').value = today;
+    document.getElementById('declarationDate').value = today;
+  });
+
+  function handleCategoryChange() {
+    const selectedCategory = document.querySelector('input[name="aiCategory"]:checked').value;
+    const cat1Warning = document.getElementById('cat1Warning');
+    const summaryYellowBox = document.getElementById('summaryYellowBox');
+    const proofreadingGuidelines = document.getElementById('proofreadingGuidelines');
+    const detailsSection = document.getElementById('detailsSection');
+
+    if (selectedCategory === 'cat1') {
+      cat1Warning.classList.remove('hidden');
+      summaryYellowBox.classList.remove('hidden');
+      proofreadingGuidelines.classList.remove('hidden');
+      detailsSection.classList.remove('hidden');
+    } else if (selectedCategory === 'cat2') {
+      cat1Warning.classList.add('hidden');
+      summaryYellowBox.classList.remove('hidden');
+      proofreadingGuidelines.classList.remove('hidden');
+      detailsSection.classList.remove('hidden');
+    } else { // Category 3
+      cat1Warning.classList.add('hidden');
+      summaryYellowBox.classList.add('hidden');
+      proofreadingGuidelines.classList.add('hidden');
+      detailsSection.classList.add('hidden');
+    }
+  }
+
+  function generatePDF() {
+    // Form Validation
+    const studentId = document.getElementById('studentId').value.trim();
+    const studentName = document.getElementById('studentName').value.trim();
+    const moduleCode = document.getElementById('moduleCode').value.trim();
+    const moduleTitle = document.getElementById('moduleTitle').value.trim();
+    const assessmentTitle = document.getElementById('assessmentTitle').value.trim();
+    const categorySelected = document.querySelector('input[name="aiCategory"]:checked');
+    const declarationCheck = document.getElementById('declarationCheck').checked;
+    const declarationName = document.getElementById('declarationName').value.trim();
+
+    if (!studentId || !studentName || !moduleCode || !moduleTitle || !assessmentTitle) {
+      alert("Please fill in all student and module information fields.");
+      return;
+    }
+
+    if (!categorySelected) {
+      alert("Please select an AI Category.");
+      return;
+    }
+
+    if (categorySelected.value !== 'cat3') {
+      const serviceType = document.getElementById('serviceType').value;
+      const toolName = document.getElementById('toolName').value.trim();
+      const sectionsUsed = document.getElementById('sectionsUsed').value.trim();
+      const promptsGiven = document.getElementById('promptsGiven').value.trim();
+      const suggestionsGiven = document.getElementById('suggestionsGiven').value.trim();
+      const actualChanges = document.getElementById('actualChanges').value.trim();
+
+      if (!serviceType || !toolName || !sectionsUsed || !promptsGiven || !suggestionsGiven || !actualChanges) {
+        alert("Please complete all details regarding the AI/Proofreading tool used.");
+        return;
+      }
+    }
+
+    if (!declarationCheck || !declarationName) {
+      alert("Please complete the declaration section and check the confirmation box.");
+      return;
+    }
+
+    window.print();
+  }
+</script>
+
+</body>
+</html>
