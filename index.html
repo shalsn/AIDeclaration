@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>University of Hertfordshire Business School – AI Declaration Form</title>
+  <title>AIDeclaration</title>
   <style>
     :root {
       --uh-purple: #5A1A60; /* UH Brand Deep Purple */
@@ -354,7 +354,7 @@
 
     <!-- Dynamic Warning for Category 1 -->
     <div id="cat1Warning" class="info-box info-warning hidden">
-      ⚠️️ <strong>Notice:</strong> It is your responsibility to check the assignment brief and follow the instructions on which sections AI is authorised.
+      ⚠ <strong>Notice:</strong> It is your responsibility to check the assignment brief and follow the instructions on which sections AI is authorised.
     </div>
 
     <!-- Light Yellow Summary Text Box (Only visible for Cat 1 and Cat 2) -->
@@ -528,7 +528,22 @@
       return;
     }
 
+    // Save original title
+    const originalTitle = document.title;
+
+    // Clean up student ID to prevent illegal filename characters
+    const cleanStudentId = studentId.replace(/[/\\?%*:|"<>]/g, '');
+
+    // Set page title to AIDeclaration + StudentID
+    document.title = `AIDeclaration${cleanStudentId}`;
+
+    // Trigger Print / Save dialog
     window.print();
+
+    // Restore original title
+    setTimeout(() => {
+      document.title = originalTitle;
+    }, 1000);
   }
 </script>
 
